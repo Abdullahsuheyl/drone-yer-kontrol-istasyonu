@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drone Kontrol İstasyonu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;500;700&family=Chakra+Petch:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Kamera Görüntüsü -->
+        <div class="panel camera-feed">
+            <div class="panel-header">Canlı Kamera Görüntüsü</div>
+            <div class="panel-content">
+                <img id="camera-stream" src="http://192.168.137.60:5000/video_feed" alt="Kamera Görüntüsü" style="width: 100%; height: auto; border-radius: 5px;" />
+                
+            </div>
+        </div>
+
+        <!-- Oryantasyon Bilgileri -->
+        <div class="panel">
+            <div class="panel-header">Oryantasyon</div>
+            <div class="panel-content telemetry-data">
+                <div class="data-item">
+                    <span class="data-label">Pitch:</span>
+                    <span class="data-value" id="pitch">Yükleniyor...</span>
+                </div>
+                <div class="data-item">
+                    <span class="data-label">Roll:</span>
+                    <span class="data-value" id="roll">Yükleniyor...</span>
+                </div>
+                <div class="data-item">
+                    <span class="data-label">Yaw:</span>
+                    <span class="data-value" id="yaw">Yükleniyor...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- GPS Verileri -->
+        <div class="panel">
+            <div class="panel-header">GPS Bilgileri</div>
+            <div class="panel-content telemetry-data">
+                <div class="data-item">
+                    <span class="data-label">Enlem:</span>
+                    <span class="data-value" id="latitude">Yükleniyor...</span>
+                </div>
+                <div class="data-item">
+                    <span class="data-label">Boylam:</span>
+                    <span class="data-value" id="longitude">Yükleniyor...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Uçuş Bilgileri -->
+        <div class="panel">
+            <div class="panel-header">Uçuş Bilgileri</div>
+            <div class="panel-content telemetry-data">
+                <div class="data-item">
+                    <span class="data-label">Hız:</span>
+                    <span class="data-value" id="speed">Yükleniyor...</span>
+                </div>
+                <div class="data-item">
+                    <span class="data-label">İrtifa:</span>
+                    <span class="data-value" id="altitude">Yükleniyor...</span>
+                </div>
+                <div class="data-item">
+                    <span class="data-label">Uçuş Süresi:</span>
+                    <span class="data-value" id="flight-time">Yükleniyor...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sistem Durumu -->
+        <div class="panel">
+            <div class="panel-header">Sistem Durumu</div>
+            <div class="panel-content telemetry-data">
+                <div class="data-item">
+                    <span class="data-label">Batarya:</span>
+                    <span class="data-value" id="battery">Yükleniyor...</span>
+                </div>
+                <div class="data-item">
+                    <span class="data-label">Voltaj:</span>
+                    <span class="data-value" id="voltage">Yükleniyor...</span>
+                </div>
+                <div class="data-item">
+                    <span class="data-label">Mod:</span>
+                    <span class="data-value">
+                        <span class="status-indicator"></span>
+                        <span id="mode">Yükleniyor...</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    <!-- Püskürtme Kontrolü (sağ panel) -->
+    <div class="panel spray-panel" style="grid-column: 3;">
+    <div class="panel-header">Püskürtme Kontrolü</div>
+    <div class="panel-content">
+        <div class="button-row">
+            <button class="spray-button" id="spray-on">Püskürtme Aç</button>
+            <button class="kapak-button" id="kapak-on">Kapak Aç</button>
+        </div>
+        <div class="button-row">
+            <button class="spray-button" id="spray-off">Püskürtme Kapat</button>
+            <button class="kapak-button" id="kapak-off">Kapak Kapat</button>
+        </div>
+    </div>
+</div>
+<button id="arm-button">ARM Et</button>
+
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
